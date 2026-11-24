@@ -81,6 +81,7 @@ var formFields = []formField{
 	{Entry: "defaultsAppearance", Field: "loadingAnimationSize", Key: "loadingAnimationSize", Defaults: true, Kind: kindString},
 	{Entry: "defaultsAppearance", Field: "loadingAnimationSpeed", Key: "loadingAnimationSpeed", Defaults: true, Kind: kindString},
 	{Entry: "defaultsAppearance", Field: "showLoadingAnimationText", Key: "showLoadingAnimationText", Defaults: true, Kind: kindTribool},
+	{Entry: "defaultsAppearance", Field: "screensaverEnabled", Key: "screensaverEnabled", Defaults: true, Kind: kindTribool},
 	{Entry: "defaultsAppearance", Field: "screensaverMode", Key: "screensaverMode", Defaults: true, Kind: kindString},
 	{Entry: "defaultsAppearance", Field: "screensaverBackdrop", Key: "screensaverBackdrop", Defaults: true, Kind: kindString},
 	{Entry: "defaultsAppearance", Field: "screensaverComponent", Key: "screensaverComponent", Defaults: true, Kind: kindString},
