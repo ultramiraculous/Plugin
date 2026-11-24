@@ -576,6 +576,7 @@ define(['baseView', 'loading', 'emby-input', 'emby-button', 'emby-checkbox', 'em
         { parent: 'DefaultShowSeerrAvailabilityBadges', fields: ['DefaultSeerrBadgeStyle'] },
         { parent: 'DefaultSeasonalSurprise', off: ['none'], fields: ['DefaultSeasonalDensity', 'DefaultSeasonalFollower'] },
         { parent: 'DefaultLoadingAnimationImage', off: ['none'], fields: ['DefaultLoadingAnimationPosition', 'DefaultLoadingAnimationSize', 'DefaultLoadingAnimationSpeed', 'DefaultShowLoadingAnimationText'] },
+        { parent: 'DefaultScreensaverEnabled', fields: ['DefaultScreensaverMode', 'DefaultScreensaverBackdrop', 'DefaultScreensaverComponent', 'DefaultScreensaverMovement', 'DefaultScreensaverPosition', 'DefaultScreensaverSize', 'DefaultScreensaverContentType', 'DefaultScreensaverLibraryPicker', 'DefaultScreensaverCollectionPicker', 'DefaultScreensaverGenrePicker'] },
         { parent: 'DefaultScreensaverComponent', off: ['none'], fields: ['DefaultScreensaverMovement', 'DefaultScreensaverSize'] },
         { parent: 'DefaultScreensaverMovement', off: ['slow', 'moderate', 'fast', 'ultra'], fields: ['DefaultScreensaverPosition'] },
         { parent: 'DefaultScreensaverBackdrop', off: ['black', 'moonfin', 'calm', 'neonPulse', 'aurora'], fields: ['DefaultScreensaverContentType', 'DefaultScreensaverLibraryPicker', 'DefaultScreensaverCollectionPicker', 'DefaultScreensaverGenrePicker'] },
@@ -2969,6 +2970,7 @@ define(['baseView', 'loading', 'emby-input', 'emby-button', 'emby-checkbox', 'em
         setSelectValue(view, '#DefaultWatchedIndicator', defaults.watchedIndicator, 'Configured mode');
         setNullableBoolSelect(view, '#DefaultShowPosterLabels', defaults.showPosterLabels);
         setNullableBoolSelect(view, '#DefaultCardFocusExpansion', defaults.cardFocusExpansion);
+        setNullableBoolSelect(view, '#DefaultScreensaverEnabled', defaults.screensaverEnabled);
         setSelectValue(view, '#DefaultScreensaverMode', defaults.screensaverMode, 'Configured mode');
         setSelectValue(view, '#DefaultScreensaverBackdrop', defaults.screensaverBackdrop, 'Configured backdrop');
         setSelectValue(view, '#DefaultScreensaverComponent', defaults.screensaverComponent, 'Configured component');
@@ -3415,6 +3417,7 @@ define(['baseView', 'loading', 'emby-input', 'emby-button', 'emby-checkbox', 'em
         d.watchedIndicator = view.querySelector('#DefaultWatchedIndicator').value || null;
         d.showPosterLabels = getNullableBoolSelect(view, '#DefaultShowPosterLabels');
         d.cardFocusExpansion = getNullableBoolSelect(view, '#DefaultCardFocusExpansion');
+        d.screensaverEnabled = getNullableBoolSelect(view, '#DefaultScreensaverEnabled');
         d.screensaverMode = view.querySelector('#DefaultScreensaverMode').value || null;
         d.screensaverBackdrop = view.querySelector('#DefaultScreensaverBackdrop').value || null;
         d.screensaverComponent = view.querySelector('#DefaultScreensaverComponent').value || null;

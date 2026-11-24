@@ -3072,6 +3072,15 @@
                             </div>
                             <h4 style="margin: 1.5em 0 0.5em; font-size: 0.95em; color: #00a4dc;">Screensaver</h4>
                             <div class="inputContainer">
+                                <label class="inputLabel inputLabelUnfocused" for="DefaultScreensaverEnabled">Screensaver (TV clients only)</label>
+                                <select id="DefaultScreensaverEnabled" is="emby-select">
+                                    <option value="">Not set (user decides)</option>
+                                    <option value="true">On</option>
+                                    <option value="false">Off</option>
+                                </select>
+                                <div class="fieldDescription">Whether the screensaver starts when the app sits idle.</div>
+                            </div>
+                            <div class="inputContainer">
                                 <label class="inputLabel inputLabelUnfocused" for="DefaultScreensaverMode">Screensaver Mode (TV clients only)</label>
                                 <select id="DefaultScreensaverMode" is="emby-select">
                                     <option value="">Not set (user decides)</option>
@@ -6395,6 +6404,7 @@
                 { parent: 'DefaultShowSeerrAvailabilityBadges', fields: ['DefaultSeerrBadgeStyle'] },
                 { parent: 'DefaultSeasonalSurprise', off: ['none'], fields: ['DefaultSeasonalDensity', 'DefaultSeasonalFollower'] },
                 { parent: 'DefaultLoadingAnimationImage', off: ['none'], fields: ['DefaultLoadingAnimationPosition', 'DefaultLoadingAnimationSize', 'DefaultLoadingAnimationSpeed', 'DefaultShowLoadingAnimationText'] },
+                { parent: 'DefaultScreensaverEnabled', fields: ['DefaultScreensaverMode', 'DefaultScreensaverBackdrop', 'DefaultScreensaverComponent', 'DefaultScreensaverMovement', 'DefaultScreensaverPosition', 'DefaultScreensaverSize', 'DefaultScreensaverContentType', 'DefaultScreensaverLibraryPicker', 'DefaultScreensaverCollectionPicker', 'DefaultScreensaverGenrePicker'] },
                 { parent: 'DefaultScreensaverComponent', off: ['none'], fields: ['DefaultScreensaverMovement', 'DefaultScreensaverSize'] },
                 { parent: 'DefaultScreensaverMovement', off: ['slow', 'moderate', 'fast', 'ultra'], fields: ['DefaultScreensaverPosition'] },
                 { parent: 'DefaultScreensaverBackdrop', off: ['black', 'moonfin', 'calm', 'neonPulse', 'aurora'], fields: ['DefaultScreensaverContentType', 'DefaultScreensaverLibraryPicker', 'DefaultScreensaverCollectionPicker', 'DefaultScreensaverGenrePicker'] },
@@ -11522,6 +11532,7 @@
                     setSelectValue('#DefaultWatchedIndicator', defaults.watchedIndicator, 'Configured mode');
                     setNullableBoolSelect('#DefaultShowPosterLabels', defaults.showPosterLabels);
                     setNullableBoolSelect('#DefaultCardFocusExpansion', defaults.cardFocusExpansion);
+                    setNullableBoolSelect('#DefaultScreensaverEnabled', defaults.screensaverEnabled);
                     setSelectValue('#DefaultScreensaverMode', defaults.screensaverMode, 'Configured mode');
                     setSelectValue('#DefaultScreensaverBackdrop', defaults.screensaverBackdrop, 'Configured backdrop');
                     setSelectValue('#DefaultScreensaverComponent', defaults.screensaverComponent, 'Configured component');
@@ -12505,6 +12516,7 @@
                     ds.watchedIndicator = document.querySelector('#DefaultWatchedIndicator').value || null;
                     ds.showPosterLabels = getNullableBoolSelect('#DefaultShowPosterLabels');
                     ds.cardFocusExpansion = getNullableBoolSelect('#DefaultCardFocusExpansion');
+                    ds.screensaverEnabled = getNullableBoolSelect('#DefaultScreensaverEnabled');
                     ds.screensaverMode = document.querySelector('#DefaultScreensaverMode').value || null;
                     ds.screensaverBackdrop = document.querySelector('#DefaultScreensaverBackdrop').value || null;
                     ds.screensaverComponent = document.querySelector('#DefaultScreensaverComponent').value || null;
