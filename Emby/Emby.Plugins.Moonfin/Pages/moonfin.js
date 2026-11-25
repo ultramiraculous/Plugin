@@ -576,7 +576,7 @@ define(['baseView', 'loading', 'emby-input', 'emby-button', 'emby-checkbox', 'em
         { parent: 'DefaultShowSeerrAvailabilityBadges', fields: ['DefaultSeerrBadgeStyle'] },
         { parent: 'DefaultSeasonalSurprise', off: ['none'], fields: ['DefaultSeasonalDensity', 'DefaultSeasonalFollower'] },
         { parent: 'DefaultLoadingAnimationImage', off: ['none'], fields: ['DefaultLoadingAnimationPosition', 'DefaultLoadingAnimationSize', 'DefaultLoadingAnimationSpeed', 'DefaultShowLoadingAnimationText'] },
-        { parent: 'DefaultScreensaverEnabled', fields: ['DefaultScreensaverMode', 'DefaultScreensaverBackdrop', 'DefaultScreensaverComponent', 'DefaultScreensaverMovement', 'DefaultScreensaverPosition', 'DefaultScreensaverSize', 'DefaultScreensaverContentType', 'DefaultScreensaverLibraryPicker', 'DefaultScreensaverCollectionPicker', 'DefaultScreensaverGenrePicker'] },
+        { parent: 'DefaultScreensaverEnabled', fields: ['DefaultScreensaverTimeout', 'DefaultScreensaverDimming', 'DefaultScreensaverClockMode', 'DefaultScreensaverMode', 'DefaultScreensaverBackdrop', 'DefaultScreensaverComponent', 'DefaultScreensaverMovement', 'DefaultScreensaverPosition', 'DefaultScreensaverSize', 'DefaultScreensaverContentType', 'DefaultScreensaverLibraryPicker', 'DefaultScreensaverCollectionPicker', 'DefaultScreensaverGenrePicker'] },
         { parent: 'DefaultScreensaverComponent', off: ['none'], fields: ['DefaultScreensaverMovement', 'DefaultScreensaverSize'] },
         { parent: 'DefaultScreensaverMovement', off: ['slow', 'moderate', 'fast', 'ultra'], fields: ['DefaultScreensaverPosition'] },
         { parent: 'DefaultScreensaverBackdrop', off: ['black', 'moonfin', 'calm', 'neonPulse', 'aurora'], fields: ['DefaultScreensaverContentType', 'DefaultScreensaverLibraryPicker', 'DefaultScreensaverCollectionPicker', 'DefaultScreensaverGenrePicker'] },
@@ -2971,6 +2971,9 @@ define(['baseView', 'loading', 'emby-input', 'emby-button', 'emby-checkbox', 'em
         setNullableBoolSelect(view, '#DefaultShowPosterLabels', defaults.showPosterLabels);
         setNullableBoolSelect(view, '#DefaultCardFocusExpansion', defaults.cardFocusExpansion);
         setNullableBoolSelect(view, '#DefaultScreensaverEnabled', defaults.screensaverEnabled);
+        setSelectValue(view, '#DefaultScreensaverTimeout', defaults.screensaverTimeout, 'Configured timeout');
+        setSelectValue(view, '#DefaultScreensaverDimming', defaults.screensaverDimming != null ? String(defaults.screensaverDimming) : '', 'Configured dimming');
+        setSelectValue(view, '#DefaultScreensaverClockMode', defaults.screensaverClockMode, 'Configured clock');
         setSelectValue(view, '#DefaultScreensaverMode', defaults.screensaverMode, 'Configured mode');
         setSelectValue(view, '#DefaultScreensaverBackdrop', defaults.screensaverBackdrop, 'Configured backdrop');
         setSelectValue(view, '#DefaultScreensaverComponent', defaults.screensaverComponent, 'Configured component');
@@ -3055,6 +3058,14 @@ define(['baseView', 'loading', 'emby-input', 'emby-button', 'emby-checkbox', 'em
         setNullableBoolSelect(view, '#DefaultPreferSdhSubtitles', defaults.preferSdhSubtitles);
         setNullableBoolSelect(view, '#DefaultPreferTextSubtitles', defaults.preferTextSubtitles);
         setNullableBoolSelect(view, '#DefaultPreferExternalSubtitles', defaults.preferExternalSubtitles);
+        setSelectValue(view, '#DefaultMaxBitrate', defaults.maxBitrate, 'Configured bitrate');
+        setSelectValue(view, '#DefaultMaxVideoResolution', defaults.maxVideoResolution, 'Configured resolution');
+        setNullableBoolSelect(view, '#DefaultShowChapterMarkers', defaults.showChapterMarkers);
+        setSelectValue(view, '#DefaultSubtitlesTextSize', defaults.subtitlesTextSize != null ? String(defaults.subtitlesTextSize) : '', 'Configured size');
+        setSelectValue(view, '#DefaultSubtitlesTextWeight', defaults.subtitlesTextWeight != null ? String(defaults.subtitlesTextWeight) : '', 'Configured weight');
+        setSelectValue(view, '#DefaultSubtitlesTextColor', defaults.subtitlesTextColor, 'Configured color');
+        setSelectValue(view, '#DefaultSubtitleTextStrokeColor', defaults.subtitleTextStrokeColor, 'Configured color');
+        setSelectValue(view, '#DefaultSubtitlesBackgroundColor', defaults.subtitlesBackgroundColor, 'Configured color');
 
         setNullableBoolSelect(view, '#DefaultCinemaModeEnabled', defaults.cinemaModeEnabled);
         setNullableBoolSelect(view, '#DefaultCinemaModeSkipEnabled', defaults.cinemaModeSkipEnabled);
@@ -3418,6 +3429,9 @@ define(['baseView', 'loading', 'emby-input', 'emby-button', 'emby-checkbox', 'em
         d.showPosterLabels = getNullableBoolSelect(view, '#DefaultShowPosterLabels');
         d.cardFocusExpansion = getNullableBoolSelect(view, '#DefaultCardFocusExpansion');
         d.screensaverEnabled = getNullableBoolSelect(view, '#DefaultScreensaverEnabled');
+        d.screensaverTimeout = view.querySelector('#DefaultScreensaverTimeout').value || null;
+        d.screensaverDimming = getNullableIntInput(view, '#DefaultScreensaverDimming');
+        d.screensaverClockMode = view.querySelector('#DefaultScreensaverClockMode').value || null;
         d.screensaverMode = view.querySelector('#DefaultScreensaverMode').value || null;
         d.screensaverBackdrop = view.querySelector('#DefaultScreensaverBackdrop').value || null;
         d.screensaverComponent = view.querySelector('#DefaultScreensaverComponent').value || null;
@@ -3510,6 +3524,14 @@ define(['baseView', 'loading', 'emby-input', 'emby-button', 'emby-checkbox', 'em
         d.preferSdhSubtitles = getNullableBoolSelect(view, '#DefaultPreferSdhSubtitles');
         d.preferTextSubtitles = getNullableBoolSelect(view, '#DefaultPreferTextSubtitles');
         d.preferExternalSubtitles = getNullableBoolSelect(view, '#DefaultPreferExternalSubtitles');
+        d.maxBitrate = view.querySelector('#DefaultMaxBitrate').value || null;
+        d.maxVideoResolution = view.querySelector('#DefaultMaxVideoResolution').value || null;
+        d.showChapterMarkers = getNullableBoolSelect(view, '#DefaultShowChapterMarkers');
+        d.subtitlesTextSize = getNullableIntInput(view, '#DefaultSubtitlesTextSize');
+        d.subtitlesTextWeight = getNullableIntInput(view, '#DefaultSubtitlesTextWeight');
+        d.subtitlesTextColor = view.querySelector('#DefaultSubtitlesTextColor').value || null;
+        d.subtitleTextStrokeColor = view.querySelector('#DefaultSubtitleTextStrokeColor').value || null;
+        d.subtitlesBackgroundColor = view.querySelector('#DefaultSubtitlesBackgroundColor').value || null;
 
         d.cinemaModeEnabled = getNullableBoolSelect(view, '#DefaultCinemaModeEnabled');
         d.cinemaModeSkipEnabled = getNullableBoolSelect(view, '#DefaultCinemaModeSkipEnabled');

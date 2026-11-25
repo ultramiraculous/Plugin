@@ -3276,6 +3276,47 @@
                                 <div class="fieldDescription">Whether the screensaver starts when the app sits idle.</div>
                             </div>
                             <div class="inputContainer">
+                                <label class="inputLabel inputLabelUnfocused" for="DefaultScreensaverTimeout">Screensaver Timeout</label>
+                                <select id="DefaultScreensaverTimeout" is="emby-select">
+                                    <option value="">Not set (user decides)</option>
+                                    <option value="m1">1 minute</option>
+                                    <option value="m2">2 minutes</option>
+                                    <option value="m3">3 minutes</option>
+                                    <option value="m5">5 minutes</option>
+                                    <option value="m10">10 minutes</option>
+                                    <option value="m15">15 minutes</option>
+                                    <option value="m30">30 minutes</option>
+                                </select>
+                                <div class="fieldDescription">How long the app sits idle before the screensaver starts.</div>
+                            </div>
+                            <div class="inputContainer">
+                                <label class="inputLabel inputLabelUnfocused" for="DefaultScreensaverDimming">Screensaver Dimming</label>
+                                <select id="DefaultScreensaverDimming" is="emby-select">
+                                    <option value="">Not set (user decides)</option>
+                                    <option value="0">Off</option>
+                                    <option value="10">10%</option>
+                                    <option value="20">20%</option>
+                                    <option value="30">30%</option>
+                                    <option value="40">40%</option>
+                                    <option value="50">50%</option>
+                                    <option value="60">60%</option>
+                                    <option value="70">70%</option>
+                                    <option value="80">80%</option>
+                                    <option value="90">90%</option>
+                                </select>
+                                <div class="fieldDescription">How much the screensaver darkens the screen.</div>
+                            </div>
+                            <div class="inputContainer">
+                                <label class="inputLabel inputLabelUnfocused" for="DefaultScreensaverClockMode">Screensaver Clock</label>
+                                <select id="DefaultScreensaverClockMode" is="emby-select">
+                                    <option value="">Not set (user decides)</option>
+                                    <option value="off">Off</option>
+                                    <option value="staticCorner">In a corner</option>
+                                    <option value="bouncing">Bouncing</option>
+                                </select>
+                                <div class="fieldDescription">Whether the screensaver shows the time, and where.</div>
+                            </div>
+                            <div class="inputContainer">
                                 <label class="inputLabel inputLabelUnfocused" for="DefaultScreensaverMode">Screensaver Mode (TV clients only)</label>
                                 <select id="DefaultScreensaverMode" is="emby-select">
                                     <option value="">Not set (user decides)</option>
@@ -4901,6 +4942,15 @@
                                 </select>
                                 <div class="fieldDescription">How much the player controls dim while HDR video plays, since white looks far brighter next to it.</div>
                             </div>
+                            <div class="inputContainer">
+                                <label class="inputLabel inputLabelUnfocused" for="DefaultShowChapterMarkers">Chapter Markers</label>
+                                <select id="DefaultShowChapterMarkers" is="emby-select">
+                                    <option value="">Not set (user decides)</option>
+                                    <option value="true">Show</option>
+                                    <option value="false">Hide</option>
+                                </select>
+                                <div class="fieldDescription">Marks on the seek bar where each chapter starts.</div>
+                            </div>
 
                             <h4 style="margin: 1.5em 0 0.5em; font-size: 0.95em; color: #00a4dc;">Player Buttons</h4>
                             <div class="inputContainer">
@@ -4908,6 +4958,37 @@
                                 <div class="fieldDescription">Check which buttons to show around the player controls and use the arrows to set their order. Play, pause and seek are always shown.</div>
                                 <div id="DefaultOsdButtonsList" style="max-height:260px;overflow-y:auto;border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:6px;margin-top:6px;"></div>
                             </div>
+                            <h4 style="margin: 1.5em 0 0.5em; font-size: 0.95em; color: #00a4dc;">Streaming Quality</h4>
+                            <div class="inputContainer">
+                                <label class="inputLabel inputLabelUnfocused" for="DefaultMaxBitrate">Max Streaming Bitrate</label>
+                                <select id="DefaultMaxBitrate" is="emby-select">
+                                    <option value="">Not set (user decides)</option>
+                                    <option value="auto">Auto</option>
+                                    <option value="200">200 Mbps</option>
+                                    <option value="120">120 Mbps</option>
+                                    <option value="80">80 Mbps</option>
+                                    <option value="40">40 Mbps</option>
+                                    <option value="20">20 Mbps</option>
+                                    <option value="10">10 Mbps</option>
+                                    <option value="5">5 Mbps</option>
+                                    <option value="2">2 Mbps</option>
+                                    <option value="1">1 Mbps</option>
+                                </select>
+                                <div class="fieldDescription">The most bandwidth a stream may use. Above it, the server transcodes to a lower bitrate.</div>
+                            </div>
+                            <div class="inputContainer">
+                                <label class="inputLabel inputLabelUnfocused" for="DefaultMaxVideoResolution">Max Resolution</label>
+                                <select id="DefaultMaxVideoResolution" is="emby-select">
+                                    <option value="">Not set (user decides)</option>
+                                    <option value="auto">Auto</option>
+                                    <option value="res480p">480p</option>
+                                    <option value="res720p">720p</option>
+                                    <option value="res1080p">1080p</option>
+                                    <option value="res2160p">2160p (4K)</option>
+                                </select>
+                                <div class="fieldDescription">The largest video a client asks for. Larger video is transcoded down.</div>
+                            </div>
+
                             <h4 style="margin: 1.5em 0 0.5em; font-size: 0.95em; color: #00a4dc;">Audio</h4>
                             <div class="inputContainer">
                                 <label class="inputLabel inputLabelUnfocused" for="DefaultDefaultAudioLanguage">Default Audio Language</label>
@@ -4976,6 +5057,58 @@
                                     <option value="">Not set (user decides)</option>
                                     <option value="true">Yes</option>
                                     <option value="false">No</option>
+                                </select>
+                            </div>
+
+                            <h4 style="margin: 1.5em 0 0.5em; font-size: 0.95em; color: #00a4dc;">Subtitle Appearance</h4>
+                            <div class="inputContainer">
+                                <label class="inputLabel inputLabelUnfocused" for="DefaultSubtitlesTextSize">Subtitle Size</label>
+                                <select id="DefaultSubtitlesTextSize" is="emby-select">
+                                    <option value="">Not set (user decides)</option>
+                                    <option value="16">Small (16)</option>
+                                    <option value="20">Normal (20)</option>
+                                    <option value="24">Large (24)</option>
+                                    <option value="28">Larger (28)</option>
+                                    <option value="32">Extra large (32)</option>
+                                    <option value="40">Huge (40)</option>
+                                </select>
+                                <div class="fieldDescription">Text size for text-based subtitles.</div>
+                            </div>
+                            <div class="inputContainer">
+                                <label class="inputLabel inputLabelUnfocused" for="DefaultSubtitlesTextWeight">Bold Subtitles</label>
+                                <select id="DefaultSubtitlesTextWeight" is="emby-select">
+                                    <option value="">Not set (user decides)</option>
+                                    <option value="700">Bold</option>
+                                    <option value="400">Regular</option>
+                                </select>
+                            </div>
+                            <div class="inputContainer">
+                                <label class="inputLabel inputLabelUnfocused" for="DefaultSubtitlesTextColor">Subtitle Text Color</label>
+                                <select id="DefaultSubtitlesTextColor" is="emby-select">
+                                    <option value="">Not set (user decides)</option>
+                                    <option value="#FFFFFFFF">White</option>
+                                    <option value="#FFCCCCCC">Light gray</option>
+                                    <option value="#FFFFFF00">Yellow</option>
+                                    <option value="#FF00FFFF">Cyan</option>
+                                    <option value="#FF00FF00">Green</option>
+                                </select>
+                            </div>
+                            <div class="inputContainer">
+                                <label class="inputLabel inputLabelUnfocused" for="DefaultSubtitleTextStrokeColor">Subtitle Outline Color</label>
+                                <select id="DefaultSubtitleTextStrokeColor" is="emby-select">
+                                    <option value="">Not set (user decides)</option>
+                                    <option value="#FF000000">Black</option>
+                                    <option value="#FF404040">Dark gray</option>
+                                    <option value="#00000000">None</option>
+                                </select>
+                            </div>
+                            <div class="inputContainer">
+                                <label class="inputLabel inputLabelUnfocused" for="DefaultSubtitlesBackgroundColor">Subtitle Background</label>
+                                <select id="DefaultSubtitlesBackgroundColor" is="emby-select">
+                                    <option value="">Not set (user decides)</option>
+                                    <option value="#00000000">None</option>
+                                    <option value="#80000000">Semi-transparent black</option>
+                                    <option value="#FF000000">Black</option>
                                 </select>
                             </div>
 
